@@ -15,4 +15,3 @@ function loginRun (routerHelper) {
 
 
 module.exports=angular.module('login',[]).run(['routerHelper',loginRun]);
->>>>>>> upstream/master
