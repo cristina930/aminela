@@ -10,6 +10,7 @@ require('./home/home.router');
 require('./home/home.ctrl');
 require('./common/config.srv');
 require('./login/login.router');
+require('./login/login.ctrl');
 require('./login/login.fltr');
 
 var app = require('./app');

@@ -4,6 +4,7 @@ function getStates() {
         config:{
             template: require('./login.template.html'),
             url:'/login',
+            controller: 'LoginCtrl',
             controllerAs:"login"
         }
     }];
