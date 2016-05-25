@@ -8,6 +8,7 @@ require('angular-ui-router');
 require('./routerHelperProvider');
 require('./home/home.router');
 require('./home/home.ctrl');
+require('./login/login.router');
 
 var app = require('./app');
 
