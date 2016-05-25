@@ -3,7 +3,7 @@ function Config (){
     return {
         validation:{
             email: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-            password:password.lenght<2
+            password:/^[\p{Z}\s]*(?:[^\p{Z}\s][\p{Z}\s]*){3,}/
     },
         msgError:{
             invalidMail:'Mail mal formado',
