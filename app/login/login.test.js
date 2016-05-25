@@ -23,4 +23,27 @@ describe('Test del modulo login', function () {
         });
         
     });
+
+        describe('Tests del filtro de password',function () {
+        var PasswordFilter, config;
+        
+        beforeEach(inject(function (PasswordFilterFilter, _config_) {
+            PasswordFilter = PasswordFilterFilter;
+            config = _config_;
+        }));
+        
+        it('Test OK: El password es correcto',function () {
+            var password = 'abc';
+            
+            expect(PasswordFilter(password)).toBe(false);
+        });
+        
+        it('Test KO: El password es demasiado corto', function () {
+            var password = 'ab';
+            
+            expect(PasswordFilter(password)).toBe(config.msgError.invalidPassword);
+        });
+        
+
+    });
 });
