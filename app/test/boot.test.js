@@ -11,6 +11,8 @@ require('../home/home.router');
 require('../home/home.ctrl');
 require('../home/home.test');
 require('./config.srv');
+require('../common/errorManger.srv');
+require('../common/errorManager.test');
 require('../login/login.router');
 require('../login/login.ctrl');
 require('../login/login.fltr');
