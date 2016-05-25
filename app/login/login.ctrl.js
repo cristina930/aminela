@@ -1,6 +1,7 @@
 function LoginCtrl (){
     
-    this.email="prueba";
+    this.email="";
+    this.password="";
 }
 
 module.exports = angular.module('login').controller('LoginCtrl',LoginCtrl);
