@@ -3,7 +3,8 @@ function getStates() {
         state:'login',
         config:{
             template: require('./login.template.html'),
-            url:'/login'
+            url:'/login',
+            controllerAs:"login"
         }
     }];
 }
