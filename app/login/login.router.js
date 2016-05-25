@@ -1,4 +1,4 @@
-function getStates (){
+function getStates() {
     return [{
         state:'login',
         config:{
@@ -8,8 +8,11 @@ function getStates (){
     }];
 }
 
-function loginRun (routerHelper){
-	routerHelper.configureStates(getStates(),'login');
+
+function loginRun (routerHelper) {
+    routerHelper.configureStates(getStates(),'login');
 }
+
+
 
 module.exports=angular.module('login',[]).run(['routerHelper',loginRun]);
