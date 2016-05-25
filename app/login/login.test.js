@@ -22,6 +22,5 @@ describe('Test del modulo login', function () {
             expect(EmailFilter(mail)).toBe(config.msgError.invalidMail);
         });
         
-
     });
 });
