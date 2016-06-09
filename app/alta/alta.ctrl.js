@@ -1,5 +1,5 @@
 function AltaController (){
-    var mv = this;
+    var vm = this;
     vm.email="";
     vm.password="";
     vm.passwordRepeat="";
