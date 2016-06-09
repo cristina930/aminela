@@ -18,3 +18,4 @@ function altaRun (routerHelper) {
 
 
 module.exports=angular.module('alta',[]).run(['routerHelper', altaRun]);
+
