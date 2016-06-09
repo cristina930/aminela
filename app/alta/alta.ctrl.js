@@ -15,7 +15,7 @@ function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
         var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)); //Pendiente de cambiar nombres
         var service = new AltaSrv();
         
-        if (!disable) {
+        if (!disable && (vm.password===vm.verPass)) {
             service.doAlta(vm.email, vm.password, vm.verPass).then(function(data){ 
                console.log('Alta con exito'); 
             },function (error) {
