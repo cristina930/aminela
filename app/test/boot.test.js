@@ -17,6 +17,7 @@ require('../login/login.router');
 require('../login/login.ctrl');
 require('../login/login.fltr');
 require('../login/pass.fltr');
+require('../login/login.srv');
 require('../login/login.test');
 
 var app = require('../app');

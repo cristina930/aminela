@@ -19,4 +19,8 @@ function loginSrvFactory ($http,$q,config){
             return defer.promise;
         }
     }
+    
+    return loginClass;
 }
+
+module.exports=angular.module('login').factory('LoginSrv',['$http','$q','config',loginSrvFactory]);
