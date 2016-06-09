@@ -5,7 +5,7 @@ function AltaController (){
     vm.passwordRepeat="";
     
     vm.loginAction = function () {
-        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email) || $filter('PassFilter')(vm.password, vm.passwordRepeat));
+        var disable = (($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilter')(vm.password, vm.passwordRepeat)));
         var service = new LoginSrv();
         
         if (!disable) {
