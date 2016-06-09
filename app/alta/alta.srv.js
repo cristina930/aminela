@@ -15,9 +15,8 @@ function altaSrvFactory ($http,$q,config,ErrorManager){
             $http(serviceConfig).then(function (result) {
                 defer.resolve(result.data);
             }, function (error) {
-                var CustomError = new ErrorManager.getCustomError(error);
-                defer.reject(CustomError);
-                console.log(CustomError);
+                var service = new ErrorManager();
+                defer.reject(service.getCustomError(error));
             });
 
             return defer.promise;

@@ -3,10 +3,10 @@ function AltaCtrl ($filter,AltaSrv,$state){
     vm.email="";
     vm.password="";
     vm.passwordRepeat="";
-    
+    vm.errorMsg ="";
 
-    vm.loginAction = function () {
-        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilter2')(vm.password, vm.passwordRepeat));
+    vm.altaAction = function () {
+        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilterRepeat')(vm.password, vm.passwordRepeat));
         var service = new AltaSrv();
         
         if (!disable) {
@@ -22,6 +22,7 @@ function AltaCtrl ($filter,AltaSrv,$state){
         vm.email="";
         vm.password="";
         vm.passwordRepeat="";
+        vm.errorMsg ="";
     };
 
 }
