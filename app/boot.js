@@ -13,16 +13,17 @@ require('./common/errorManger.srv');
 require('./login/login.router');
 require('./login/login.ctrl');
 require('./login/login.fltr');
-
 require('./login/pass.fltr');
 require('./login/login.srv');
 
-
 require('./alta/alta.router');
-require('.alta/ctrl.js');
-require('.alta/router.js');
-require('.alta/template.html');
+require('./alta/alta.ctrl');
+require('./alta/verPass.fltr');
+require('./alta/alta.template.html');
 require('./alta/alta.srv');
+
+
+
 
 
 var app = require('./app');

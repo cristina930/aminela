@@ -24,7 +24,7 @@ function getStates() {
 
 
 function altaRun (routerHelper) {
-    routerHelper.configureStates(getStates(),'alta');
+    routerHelper.configureStates(getStates());
 }
 
 
