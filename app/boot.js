@@ -23,6 +23,7 @@ require('./alta/alta.ctrl');
 require('./alta/alta.router');
 require('./alta/alta.template.html');
 require('./alta/alta.srv');
+require('./alta/verPass.fltr.js');
 
 
 var app = require('./app');
