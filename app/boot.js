@@ -17,6 +17,9 @@ require('./login/login.fltr');
 require('./login/pass.fltr');
 require('./login/login.srv');
 
+/*require('.alta/ctrl.js');
+require('.alta/router.js');
+require('.alta/template.html');*/
 
 var app = require('./app');
 

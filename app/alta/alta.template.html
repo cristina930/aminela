@@ -1,0 +1,71 @@
+
+<div class="well well-sm" ng-if="alta.errorMsg">
+    <h1><span class="label label-danger">{{alta.errorMsg}}</span></h1>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            <button type="button" class="btn btn-default" ng-click="alta.errorMsg=null">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="well well-sm">
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            <img src="app/img/menu_set_quiniela.png" />
+            <h1>Aminiela</h1>
+            <h2>Alta de nuevo usuario</h2>
+        </div>
+    </div>
+    <div ng-class="['form-group']">
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                <label class="control-label" for="inputEmail">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                <input type="text" class="form-control" ng-model="alta.email" id="inputEmail"/>
+                <span class="label label-danger" ng-if="alta.email|EmailFilter">{{alta.email|EmailFilter}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                <label class="control-label" for="pssdInput">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                
+                <input type="password" class="form-control"  ng-model="alta.password" id="pssdInput"/>
+                <span class="label label-danger" ng-if="alta.password|PassFilter">{{alta.password|PassFilter}}</span>
+
+            </div>
+        </div>
+        Verificar password
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                
+                <input type="password" class="form-control"  ng-model="alta.verPass" id="pssdInput2"/>
+                <span class="label label-danger" ng-if="alta.verPass|VerPassFilter">{{alta.verPass|VerPassFilter}}</span>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-2">
+         
+            <button type="button" ng-click="alta.AltaAction()" class="btn btn-default" ng-class="['btn', 'btn-primary', {'disabled':((alta.password|PassFilter) || (alta.email|EmailFilter) || (alta.verPass|VerPassFilter))}]">Crear usuario</button>
+        </div>
+        <div class="col-xs-2">
+          
+            <button type="button" ng-click="alta.clean()" class="btn btn-default">Reset</button>&nbsp;
+            
+            <button type="button" ng-click="alta.login()" >Cancelar</button>
+        </div>
+    </div>
+</div>
+
