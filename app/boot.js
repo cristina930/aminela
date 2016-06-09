@@ -16,6 +16,8 @@ require('./login/login.fltr');
 require('./login/pass.fltr');
 require('./login/login.srv');
 require('./alta/alta.router');
+require('./alta/alta.ctrl');
+require('./alta/alta.srv');
 var app = require('./app');
 
 angular.element(document).ready(function () {
