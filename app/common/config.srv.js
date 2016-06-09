@@ -4,16 +4,24 @@ function Config (){
         validation:{
             email: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 
-            pass: /^.{2,}$/
+            pass: /^.{2,}$/,
+            verPass:'falta'
         },
         msgError:{
             invalidMail:'Mail mal formado',
-            invalidPass:'Password mal formado'
+            invalidPass:'Password mal formado',
+            distinctPass:'Los password no coinciden' 
+
         },
         backService:{
             loginConf:{
                 method:'GET',
                 url:'app/mocks/loginSrv.json',
+                responseType: 'json'
+            },
+            altaConf:{
+                method:'POST',
+                url:'app/mocks/altaSrv.json',
                 responseType: 'json'
             }
         },
@@ -23,7 +31,6 @@ function Config (){
             "403":"No tienes permisos para acceder",
             "500":"Fallo del sistema pongase en contacto con el administrador",
             default:"Buena suerta y que la fuerza te acompañe"
-
         }
     };
 

@@ -15,7 +15,7 @@ require('./config.srv');
 
 require('../common/errorManger.srv');
 require('../common/errorManager.test');
-
+//login
 require('../login/login.router');
 require('../login/login.ctrl');
 require('../login/login.fltr');
@@ -23,6 +23,15 @@ require('../login/pass.fltr');
 require('../login/login.srv');
 require('../login/login.test');
 require('../login/login.Password.fltr');
+
+//alta
+
+require('../alta/alta.router');
+// require('../alta/alta.ctrl');
+// require('../alta/alta.fltr');
+// require('../alta/alta.fltr');
+require('../alta/alta.srv');
+require('../alta/alta.test');
 
 var app = require('../app');
 
