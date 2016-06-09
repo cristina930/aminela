@@ -19,8 +19,8 @@ require('./login/login.srv');
 
 
 require('./alta/alta.router');
-require('./alta/alta.ctrl.js');
-require('./alta/alta.router.js');
+require('./alta/alta.ctrl');
+require('./alta/alta.router');
 require('./alta/alta.template.html');
 require('./alta/alta.srv');
 
