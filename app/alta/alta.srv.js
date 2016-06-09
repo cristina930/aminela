@@ -1,14 +1,15 @@
 function altaSrvFactory ($http,$q,config,ErrorManager){
 
     function altaClass () {
-        this.doAlta = function (email, psswd) {
+
+        this.doAlta = function (email, psswd,passwordRepeat) {
             var defer = $q.defer();
             var serviceConfig = config.backService.altaConf;
             
             serviceConfig.data={
                 email:email,
                 password:psswd,
-                password2: psswdd2
+                passwordRepeat: passwordRepeat
             };
 
             $http(serviceConfig).then(function (result) {

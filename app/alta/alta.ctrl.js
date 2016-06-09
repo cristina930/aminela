@@ -1,15 +1,16 @@
-function AltaController (){
+function AltaCtrl ($filter,AltaSrv,$state){
     var vm = this;
     vm.email="";
     vm.password="";
     vm.passwordRepeat="";
     
+
     vm.loginAction = function () {
-        var disable = (($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilter')(vm.password, vm.passwordRepeat)));
-        var service = new LoginSrv();
+        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilter2')(vm.password, vm.passwordRepeat));
+        var service = new AltaSrv();
         
         if (!disable) {
-            service.doAlta(vm.email, vm.password, wm.passwordRepeat).then(function(data){
+            service.doAlta(vm.email, vm.password, vm.passwordRepeat).then(function(data){
                console.log('Login con exito'); 
             },function (error) {
                 vm.errorMsg = error.usuario.msg;
@@ -22,7 +23,7 @@ function AltaController (){
         vm.password="";
         vm.passwordRepeat="";
     };
-    
+
 }
 
-module.exports = angular.module('alta').controller('AltaCtrl',AltaController);
+module.exports = angular.module('alta').controller('AltaCtrl',['$filter','AltaSrv','$state', AltaCtrl]);
