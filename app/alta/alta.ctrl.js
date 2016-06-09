@@ -4,6 +4,7 @@ function AltaCtrl ($filter,AltaSrv,$state){
     vm.password="";
     vm.passwordRepeat="";
     
+
     vm.loginAction = function () {
         var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilter2')(vm.password, vm.passwordRepeat));
         var service = new AltaSrv();
@@ -22,7 +23,7 @@ function AltaCtrl ($filter,AltaSrv,$state){
         vm.password="";
         vm.passwordRepeat="";
     };
-    
+
 }
 
 module.exports = angular.module('alta').controller('AltaCtrl',['$filter','AltaSrv','$state', AltaCtrl]);
