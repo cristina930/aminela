@@ -9,9 +9,14 @@ require('./routerHelperProvider');
 require('./home/home.router');
 require('./home/home.ctrl');
 require('./common/config.srv');
+require('./common/errorManger.srv');
 require('./login/login.router');
+require('./login/login.ctrl');
 require('./login/login.fltr');
-require('./login/login.Password.fltr');
+
+require('./login/pass.fltr');
+require('./login/login.srv');
+
 
 var app = require('./app');
 
