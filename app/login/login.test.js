@@ -183,5 +183,96 @@ describe('Test del modulo login', function () {
             });
         });
     });
+    
+    describe("Test del controlador de login", function () {
+       var controlador, $httpBackend, config;
+        
+        beforeEach(inject(function ($controller, $filter, LoginSrv, $state, _$httpBackend_,_config_) {
+            controlador = function () {
+                $httpBackend = _$httpBackend_;
+                config = _config_;
+                return $controller('LoginCtrl',{
+                    '$filter':$filter,
+                    'LoginSrv': LoginSrv,
+                    '$state':$state
+                });
+            }
+        }));
+        
+        
+        it('Test OK: Comprobemos que nuestro contralador tiene declaradas las variables y eventos', function () {
+           var ctrl = controlador();
+            
+            expect(ctrl.email).toBeDefined();
+            expect(ctrl.password).toBeDefined();
+            expect(ctrl.errorMsg).toBeDefined();
+            expect(ctrl.loginAction).toBeDefined();
+            expect(ctrl.clean).toBeDefined();
+            expect(ctrl.alta).toBeDefined();
+        });
+        
+        it('Test KO: Comprobamos que si el mail y el passoword no son validos no se llama al servcio',function () {
+           var ctrl = controlador();
+            ctrl.email = "";
+            ctrl.password = "";
+            
+            var loginData = {
+                email: ctrl.email,
+                password: ctrl.password
+            };
+            
+            var configServ = config.backService.loginConf;
+            
+            $httpBackend.expect(configServ.method, configServ.url, loginData).respond(function () {
+                return [200,{},{}]
+            });
+            
+            try{
+                ctrl.loginAction();
+                $httpBackend.flush();
+                expect(true).toBe(false);
+            }catch (e){
+                expect(true).toBe(true);
+            }
+        });
+
+        it('Test KO: Actualizamos el mesaje de error',function () {
+            var ctrl = controlador();
+            ctrl.email = "pepe@mail.com";
+            ctrl.password = "123123";
+
+            var loginData = {
+                email: ctrl.email,
+                password: ctrl.password
+            };
+
+            var configServ = config.backService.loginConf;
+            var configError = config.serviceError;
+
+            $httpBackend.expect(configServ.method, configServ.url, loginData).respond(function () {
+                return [404,{},{}]
+            });
+
+            try{
+                ctrl.loginAction();
+                $httpBackend.flush();
+                expect(ctrl.errorMsg).toBe(configError['404']);
+            }catch (e){
+                expect(true).toBe(false);
+            }
+        });
+
+        it('Test OK: Probemos que el clean limpia el email y el password', function () {
+           var ctrl = controlador();
+            ctrl.email = "pepe@mail.com";
+            ctrl.password = "123432";
+
+            ctrl.clean();
+
+            expect(ctrl.email).toBe("");
+            expect(ctrl.password).toBe("");
+        });
+
+    });
 
 });

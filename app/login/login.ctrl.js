@@ -32,8 +32,6 @@ function LoginCtrl($filter,LoginSrv,$state) {
     vm.alta = function () {
         $state.go('alta');
     };
-
-    starup();
 }
 
 module.exports = angular.module('login').controller('LoginCtrl', ['$filter','LoginSrv','$state', LoginCtrl]);
