@@ -42,12 +42,16 @@
 
             </div>
         </div>
-        Verificar password
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                <label class="control-label" for="pssdInput">Verificar password</label>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-offset-4 col-xs-4">
                 
                 <input type="password" class="form-control"  ng-model="alta.verPass" id="pssdInput2"/>
-                <span class="label label-danger" ng-if="alta.verPass|VerPassFilter">{{alta.verPass|VerPassFilter}}</span>
+                <span class="label label-danger" ng-if="(alta.verPass|VerPassFilter) && (alta.verPass!==alta.password)">{{alta.verPass|VerPassFilter}}</span>
 
             </div>
         </div>
@@ -64,7 +68,7 @@
           
             <button type="button" ng-click="alta.clean()" class="btn btn-default">Reset</button>&nbsp;
             
-            <button type="button" ng-click="alta.login()" >Cancelar</button>
+            <button type="button" ng-click="alta.login()" class="btn btn-default" >Cancelar</button>
         </div>
     </div>
 </div>

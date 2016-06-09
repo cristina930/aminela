@@ -5,7 +5,7 @@ function Config (){
             email: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 
             pass: /^.{2,}$/,
-            verPass:'falta'
+            verPass:/^.{2,}$/
         },
         msgError:{
             invalidMail:'Mail mal formado',
