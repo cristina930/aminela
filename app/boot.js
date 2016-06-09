@@ -18,9 +18,10 @@ require('./login/login.srv');
 
 require('./alta/alta.router');
 require('./alta/alta.ctrl');
-require('./alta/verPass.fltr');
+require('./alta/alta.router');
 require('./alta/alta.template.html');
 require('./alta/alta.srv');
+require('./alta/verPass.fltr.js');
 
 
 

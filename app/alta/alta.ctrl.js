@@ -12,7 +12,7 @@ function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
     //EVENTOS
 
     vm.AltaAction = function () {
-        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)); //Pendiente de cambiar nombres
+        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('VerPassFilter')(vm.verPass)); //Pendiente de cambiar nombres
         var service = new AltaSrv();
         
         if (!disable && (vm.password===vm.verPass)) {
