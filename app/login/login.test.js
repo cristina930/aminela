@@ -77,6 +77,111 @@ describe('Test del modulo login', function () {
             
             $httpBackend.flush();
         });
+        
+        it ('Test KO: Probar error en caso de 404',function () {
+                var logingData ={
+                    email:'pepe@email.com',
+                    password:'12345'
+                };
+
+                var servConfig = config.backService.loginConf;
+                var errorConfig = config.serviceError;
+                var service = new LoginSrv();
+                
+                $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                    return [404,{},{}];
+                });
+                
+                service.doLogin(logingData.email, logingData.password).then(function (result) {
+                   expect(false).toBe(true); 
+                }, function (error) {
+                    expect(error.usuario.msg).toBe(errorConfig['404']);
+                });
+        });
+
+        it ('Test KO: Probar error en caso de 401',function () {
+            var logingData ={
+                email:'pepe@email.com',
+                password:'12345'
+            };
+
+            var servConfig = config.backService.loginConf;
+            var errorConfig = config.serviceError;
+            var service = new LoginSrv();
+
+            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                return [401,{},{}];
+            });
+
+            service.doLogin(logingData.email, logingData.password).then(function (result) {
+                expect(false).toBe(true);
+            }, function (error) {
+                expect(error.usuario.msg).toBe(errorConfig['401']);
+            });
+        });
+
+        it ('Test KO: Probar error en caso de 403',function () {
+            var logingData ={
+                email:'pepe@email.com',
+                password:'12345'
+            };
+
+            var servConfig = config.backService.loginConf;
+            var errorConfig = config.serviceError;
+            var service = new LoginSrv();
+
+            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                return [403,{},{}];
+            });
+
+            service.doLogin(logingData.email, logingData.password).then(function (result) {
+                expect(false).toBe(true);
+            }, function (error) {
+                expect(error.usuario.msg).toBe(errorConfig['403']);
+            });
+        });
+
+        it ('Test KO: Probar error en caso de 500',function () {
+            var logingData ={
+                email:'pepe@email.com',
+                password:'12345'
+            };
+
+            var servConfig = config.backService.loginConf;
+            var errorConfig = config.serviceError;
+            var service = new LoginSrv();
+
+            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                return [500,{},{}];
+            });
+
+            service.doLogin(logingData.email, logingData.password).then(function (result) {
+                expect(false).toBe(true);
+            }, function (error) {
+                expect(error.usuario.msg).toBe(errorConfig['500']);
+            });
+        });
+
+        it ('Test KO: Probar error en caso de 600',function () {
+            var logingData ={
+                email:'pepe@email.com',
+                password:'12345'
+            };
+
+            var servConfig = config.backService.loginConf;
+            var errorConfig = config.serviceError;
+            var service = new LoginSrv();
+
+            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                return [600,{},{}];
+            });
+
+            service.doLogin(logingData.email, logingData.password).then(function (result) {
+                expect(false).toBe(true);
+            }, function (error) {
+                expect(error.usuario.msg).toBe(errorConfig.default);
+            });
+        });
     });
 
 });
