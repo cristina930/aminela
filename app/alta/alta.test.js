@@ -37,7 +37,7 @@ describe('Test del modulo alta', function (){
        
       });
       
-      it('Test Fail: Probemos que obtenemos los datos correctos si el alta es un error', function () {
+      it('Test Fail 404: Probemos que obtenemos los datos correctos si el alta es un error', function () {
           var altaData = {
               email: 'pepe@email.com',
               password: '12345',
@@ -56,6 +56,104 @@ describe('Test del modulo alta', function (){
                   expect(false).toBe(true);
               }, function (error) {
                   expect(error.usuario.msg).toBe(errorConfig['404']);
+              });
+
+          $httpBackend.flush();
+
+      });
+      it('Test Fail 401: Probemos que obtenemos los datos correctos si el alta es un error', function () {
+          var altaData = {
+              email: 'pepe@email.com',
+              password: '12345',
+              checkPassword: '12345'
+          }
+
+          var servConfig = config.backService.altaConf;
+          var service = new AltaSrv();
+          var errorConfig = config.serviceError;
+          $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
+              return [401, {}, {}];
+          });
+
+          service.doAlta(altaData.email, altaData.password, altaData.checkPassword).
+              then(function (result) {
+                  expect(false).toBe(true);
+              }, function (error) {
+                  expect(error.usuario.msg).toBe(errorConfig['401']);
+              });
+
+          $httpBackend.flush();
+
+      });
+      
+      it('Test Fail 403: Probemos que obtenemos los datos correctos si el alta es un error', function () {
+          var altaData = {
+              email: 'pepe@email.com',
+              password: '12345',
+              checkPassword: '12345'
+          }
+
+          var servConfig = config.backService.altaConf;
+          var service = new AltaSrv();
+          var errorConfig = config.serviceError;
+          $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
+              return [403, {}, {}];
+          });
+
+          service.doAlta(altaData.email, altaData.password, altaData.checkPassword).
+              then(function (result) {
+                  expect(false).toBe(true);
+              }, function (error) {
+                  expect(error.usuario.msg).toBe(errorConfig['403']);
+              });
+
+          $httpBackend.flush();
+
+      });
+      it('Test Fail 500: Probemos que obtenemos los datos correctos si el alta es un error', function () {
+          var altaData = {
+              email: 'pepe@email.com',
+              password: '12345',
+              checkPassword: '12345'
+          }
+
+          var servConfig = config.backService.altaConf;
+          var service = new AltaSrv();
+          var errorConfig = config.serviceError;
+          $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
+              return [500, {}, {}];
+          });
+
+          service.doAlta(altaData.email, altaData.password, altaData.checkPassword).
+              then(function (result) {
+                  expect(false).toBe(true);
+              }, function (error) {
+                  expect(error.usuario.msg).toBe(errorConfig['500']);
+              });
+
+          $httpBackend.flush();
+
+      });
+      
+      it('Test Fail Others: Probemos que obtenemos los datos correctos si el alta es un error', function () {
+          var altaData = {
+              email: 'pepe@email.com',
+              password: '12345',
+              checkPassword: '12345'
+          }
+
+          var servConfig = config.backService.altaConf;
+          var service = new AltaSrv();
+          var errorConfig = config.serviceError;
+          $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
+              return [123, {}, {}];
+          });
+
+          service.doAlta(altaData.email, altaData.password, altaData.checkPassword).
+              then(function (result) {
+                  expect(false).toBe(true);
+              }, function (error) {
+                  expect(error.usuario.msg).toBe(errorConfig.default);
               });
 
           $httpBackend.flush();

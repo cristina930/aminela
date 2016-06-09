@@ -25,13 +25,12 @@ require('../login/login.test');
 require('../login/login.Password.fltr');
 
 //alta
-
 require('../alta/alta.router');
-// require('../alta/alta.ctrl');
-// require('../alta/alta.fltr');
-// require('../alta/alta.fltr');
+require('../alta/alta.ctrl');
+require('../alta/verPass.fltr');
 require('../alta/alta.srv');
 require('../alta/alta.test');
+
 
 var app = require('../app');
 
