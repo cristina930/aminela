@@ -12,14 +12,17 @@ function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
     //EVENTOS
 
     vm.AltaAction = function () {
-        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('VerPassFilter')(vm.verPass)); //Pendiente de cambiar nombres
+        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('VerPassFilter')(vm.verPass,vm.password)); //Pendiente de cambiar nombres
         var service = new AltaSrv();
-        
+        console.log(disable);
         if (!disable) {
+            console.log("alta action");
             service.doAlta(vm.email, vm.password, vm.verPass).then(function(data){ 
                 $state.go('login');
                console.log('Alta con exito');               
             },function (error) {
+                console.log("alta action Error");
+                console.log("error");
                 vm.errorMsg = error.usuario.msg;
             });
         }
