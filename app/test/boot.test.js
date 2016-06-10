@@ -22,14 +22,13 @@ require('../login/login.fltr');
 require('../login/pass.fltr');
 require('../login/login.srv');
 require('../login/login.test');
-require('../login/login.Password.fltr');
-
-//alta
 require('../alta/alta.router');
 require('../alta/alta.ctrl');
-require('../alta/verPass.fltr');
+require('../alta/passRepeat.fltr');
 require('../alta/alta.srv');
 require('../alta/alta.test');
+require('../menu/menu.router');
+require('../dashboard/dashboard.router');
 
 
 var app = require('../app');

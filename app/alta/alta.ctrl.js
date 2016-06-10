@@ -1,28 +1,19 @@
-function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
-
-    //ZONA DE DICCIONARIO
+function AltaCtrl ($filter,AltaSrv,$state){
     var vm = this;
-    vm.errorMsg = null;
+    vm.email="";
+    vm.password="";
+    vm.passwordRepeat="";
+    vm.errorMsg ="";
 
-    vm.email = "";
-    vm.password = "";
-    vm.verPass = "";
-    //FUNCIONES AUXILIARES
-
-    //EVENTOS
-
-    vm.AltaAction = function () {
-        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('VerPassFilter')(vm.verPass,vm.password)); //Pendiente de cambiar nombres
+    vm.altaAction = function () {
+        var disable = ($filter('PassFilter')(vm.password)) || ($filter('EmailFilter')(vm.email)) || ($filter('PassFilterRepeat')(vm.password, vm.passwordRepeat));
         var service = new AltaSrv();
-        console.log(disable);
+        
         if (!disable) {
-            console.log("alta action");
-            service.doAlta(vm.email, vm.password, vm.verPass).then(function(data){ 
-                $state.go('login');
-               console.log('Alta con exito');               
+            service.doAlta(vm.email, vm.password, vm.passwordRepeat).then(function(data){
+               console.log('Alta con exito'); 
+               $state.go('login', {result:"Se creado el usuario correctamente"});
             },function (error) {
-                console.log("alta action Error");
-                console.log("error");
                 vm.errorMsg = error.usuario.msg;
             });
         }
@@ -31,12 +22,10 @@ function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
     vm.clean = function () {
         vm.email="";
         vm.password="";
-        vm.verPass="";
+        vm.passwordRepeat="";
+        vm.errorMsg ="";
     };
-    
-    vm.login = function () {
-        $state.go('login');
-    };
+
 }
 
-module.exports = angular.module('alta').controller('AltaCtrl', ['$filter','AltaSrv','$state', AltaCtrl]);
+module.exports = angular.module('alta').controller('AltaCtrl',['$filter','AltaSrv','$state', AltaCtrl]);

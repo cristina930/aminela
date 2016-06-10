@@ -4,9 +4,9 @@ function getStates() {
         state:'login',
         config:{
             template: require('./login.template.html'),
-            url:'/login',
+            url:'/login/:result',
             controller: 'LoginCtrl',
-            controllerAs:"login"
+            controllerAs:"login",
         }
     }];
 }
@@ -14,7 +14,7 @@ function getStates() {
 
 
 function loginRun (routerHelper) {
-    routerHelper.configureStates(getStates(),'login');
+    routerHelper.configureStates(getStates(),'login/');
 }
 
 

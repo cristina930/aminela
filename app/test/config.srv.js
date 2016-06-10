@@ -11,7 +11,7 @@ function Config (){
         msgError:{
             invalidMail:'Mail mal formado',
             invalidPass:'Password mal formado',
-            distinctPass:'Los password no coinciden' 
+            invalidPassEqual:'Password no coincidentes'
         },
         backService:{
             loginConf:{
@@ -19,9 +19,9 @@ function Config (){
                 url:'/test',
                 responseType: 'json'
             },
-            altaConf: {
-                method: 'POST',
-                url: '/test',
+            altaConf:{
+                method:'POST',
+                url:'/test',
                 responseType: 'json'
             }
         },
