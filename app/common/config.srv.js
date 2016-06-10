@@ -6,10 +6,16 @@ function Config (){
         },
         msgError:{
             invalidMail:'Mail mal formado',
-            invalidPass:'Password mal formado'
+            invalidPass:'Password mal formado',
+            invalidPassEqual:'Password no coincidentes'
         },
         backService:{
             loginConf:{
+                method:'GET',
+                url:'app/mocks/loginSrv.json',
+                responseType: 'json'
+            },
+             altaConf:{
                 method:'GET',
                 url:'app/mocks/loginSrv.json',
                 responseType: 'json'

@@ -1,4 +1,4 @@
-function LoginCtrl($filter,LoginSrv,$state) {
+function LoginCtrl($filter,LoginSrv,$state, $stateParams) {
 
     //ZONA DE DICCIONARIO
     var vm = this;
@@ -6,7 +6,9 @@ function LoginCtrl($filter,LoginSrv,$state) {
 
     vm.email = "";
     vm.password = "";
+    vm.message= ($stateParams.result)?$stateParams.result:null;
 
+    console.log('inicio login:'+ vm.message); 
     //FUNCIONES AUXILIARES
 
     //EVENTOS
@@ -34,4 +36,4 @@ function LoginCtrl($filter,LoginSrv,$state) {
     };
 }
 
-module.exports = angular.module('login').controller('LoginCtrl', ['$filter','LoginSrv','$state', LoginCtrl]);
+module.exports = angular.module('login').controller('LoginCtrl', ['$filter','LoginSrv','$state','$stateParams', LoginCtrl]);

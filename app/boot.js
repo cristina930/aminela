@@ -12,9 +12,13 @@ require('./common/config.srv');
 require('./common/errorManger.srv');
 require('./login/login.router');
 require('./login/login.ctrl');
+require('./alta/alta.router');
+require('./alta/alta.ctrl');
+require('./alta/alta.srv');
 require('./login/login.fltr');
 require('./login/pass.fltr');
 require('./login/login.srv');
+require('./alta/passRepeat.fltr');
 
 var app = require('./app');
 
