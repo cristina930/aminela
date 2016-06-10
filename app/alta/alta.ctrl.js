@@ -11,7 +11,8 @@ function AltaCtrl ($filter,AltaSrv,$state){
         
         if (!disable) {
             service.doAlta(vm.email, vm.password, vm.passwordRepeat).then(function(data){
-               console.log('Login con exito'); 
+               console.log('Alta con exito'); 
+               $state.go('login', {result:"Se creado el usuario correctamente"});
             },function (error) {
                 vm.errorMsg = error.usuario.msg;
             });
