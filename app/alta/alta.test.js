@@ -10,6 +10,30 @@ describe('Test del modulo alta', function () {
             config = _config_;
         }));
 
+        describe('Tests del filtro de passRepeat',function () {
+        	var PassFilterRepeat, config;
+
+        	beforeEach(inject(function (PassFilterRepeatFilter, _config_) {
+        		PassFilterRepeat = PassFilterRepeatFilter;
+        	config = _config_;
+        	}));
+
+        	it('Test OK: El pass del filtro esta bien formado',function () {
+        	var pass = '1234aa##';
+        	var pass2 = '1234aa##';
+
+        	expect(PassFilterRepeat(pass,pass2)).toBe(false);
+        	});
+
+        	it('Test KO: El pass del filtro esta mal formado', function () {
+        	var pass = 'aaa';
+        	var pass2 = 'bbb';
+
+        	expect(PassFilterRepeat(pass,pass2)).toBe(config.msgError.invalidPassEqual);
+        	});
+
+        });
+
         it('Test OK: Probemos que obtenemos los datos correctos si el alta es un exito',function () {
            var altaData ={
                email:'pepe@email.com',
@@ -34,7 +58,7 @@ describe('Test del modulo alta', function () {
         });
         
         it ('Test KO: Probar error en caso de 404',function () {
-                var logingData ={
+                var altaData ={
                     email:'pepe@email.com',
                     password:'12345',
                     passwordRepeat:'12345'
@@ -42,9 +66,9 @@ describe('Test del modulo alta', function () {
 
                 var servConfig = config.backService.altaConf;
                 var errorConfig = config.serviceError;
-                var service = new LoginSrv();
+                var service = new AltaSrv();
                 
-                $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+                $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
                     return [404,{},{}];
                 });
                 
@@ -56,7 +80,7 @@ describe('Test del modulo alta', function () {
         });
 
         it ('Test KO: Probar error en caso de 401',function () {
-            var logingData ={
+            var altaData ={
                 email:'pepe@email.com',
                 password:'12345',
                 passwordRepeat:'12345'
@@ -64,9 +88,9 @@ describe('Test del modulo alta', function () {
 
             var servConfig = config.backService.altaConf;
             var errorConfig = config.serviceError;
-            var service = new LoginSrv();
+            var service = new AltaSrv();
 
-            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+            $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
                 return [401,{},{}];
             });
 
@@ -86,9 +110,9 @@ describe('Test del modulo alta', function () {
 
             var servConfig = config.backService.altaConf;
             var errorConfig = config.serviceError;
-            var service = new LoginSrv();
+            var service = new AltaSrv();
 
-            $httpBackend.expect(servConfig.method, servConfig.url, logingData).respond(function () {
+            $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
                 return [403,{},{}];
             });
 
@@ -108,7 +132,7 @@ describe('Test del modulo alta', function () {
 
             var servConfig = config.backService.altaConf;
             var errorConfig = config.serviceError;
-            var service = new LoginSrv();
+            var service = new AltaSrv();
 
             $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
                 return [500,{},{}];
@@ -130,7 +154,7 @@ describe('Test del modulo alta', function () {
 
             var servConfig = config.backService.altaConf;
             var errorConfig = config.serviceError;
-            var service = new LoginSrv();
+            var service = new AltaSrv();
 
             $httpBackend.expect(servConfig.method, servConfig.url, altaData).respond(function () {
                 return [600,{},{}];
@@ -151,7 +175,7 @@ describe('Test del modulo alta', function () {
             controlador = function () {
                 $httpBackend = _$httpBackend_;
                 config = _config_;
-                return $controller('LoginCtrl',{
+                return $controller('AltaCtrl',{
                     '$filter':$filter,
                     'AltaSrv': AltaSrv,
                     '$state':$state
