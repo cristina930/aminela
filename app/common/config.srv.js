@@ -20,7 +20,7 @@ function Config (){
                 responseType: 'json'
             },
             altaConf:{
-                method:'POST',
+                method:'GET',
                 url:'app/mocks/altaSrv.json',
                 responseType: 'json'
             }
