@@ -17,7 +17,8 @@ function AltaCtrl($filter,AltaSrv,$state) { //Pendiente de cambiar loginSrv
         
         if (!disable) {
             service.doAlta(vm.email, vm.password, vm.verPass).then(function(data){ 
-               console.log('Alta con exito'); 
+                $state.go('login');
+               console.log('Alta con exito');               
             },function (error) {
                 vm.errorMsg = error.usuario.msg;
             });
