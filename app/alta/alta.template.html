@@ -1,3 +1,12 @@
+<div class="well well-sm" ng-if="alta.errorMsg">
+    <h1><span class="label label-danger">{{alta.errorMsg}}</span></h1>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            <button type="button" class="btn btn-default" ng-click="alta.errorMsg=null">Cerrar</button>
+        </div>
+    </div>
+</div>
+
 <div class="well well-sm">
     <div class="row">
         <div class="col-xs-offset-4 col-xs-4">
@@ -46,7 +55,7 @@
     <div class="row">
         <div class="col-xs-offset-4 col-xs-4">
             <button type="button" ng-click="alta.clean()" class="btn btn-default">Reset</button>&nbsp;
-            <button type="button" ng-click="alta.loginAction()" ng-class="['btn', 'btn-primary', {'disabled':((alta.password|PassFilter) || (alta.email|EmailFilter)|| (alta.passwordRepeat|PassFilterRepeat: alta.password))}]">Save</button>
+            <button type="button" ng-click="alta.altaAction()" ng-class="['btn', 'btn-primary', {'disabled':((alta.password|PassFilter) || (alta.email|EmailFilter)|| (alta.passwordRepeat|PassFilterRepeat: alta.password))}]">Save</button>
         </div>
     </div>
 </div>

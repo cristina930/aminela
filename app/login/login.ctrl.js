@@ -22,6 +22,7 @@ function LoginCtrl($filter,LoginSrv,$state, $stateParams) {
                console.log('Login con exito'); 
             },function (error) {
                 vm.errorMsg = error.usuario.msg;
+                vm.message=null;
             });
         }
     };

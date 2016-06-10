@@ -17,7 +17,7 @@ function Config (){
             },
              altaConf:{
                 method:'GET',
-                url:'app/mocks/loginSrv.json',
+                url:'app/mocks/altaSrv.json',
                 responseType: 'json'
             }
         },
